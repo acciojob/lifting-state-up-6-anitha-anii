@@ -1,27 +1,24 @@
 import React, { useState } from 'react';
-import ChildComponent from './Button';
+import ChildComponent from './Button.js';
 
 const App = () => {
   const [todos, setTodos] = useState([
     { id: 1, text: 'Learn React', completed: false },
-    { id: 2, text: 'Build a react app', completed: false },
-    { id: 3, text: 'Deploy react app', completed: false }
+    { id: 2, text: 'Create react app', completed: false },
+    { id: 3, text: 'Deploy react app', completed: false },
   ]);
 
-  const completeTodo = (id) => {
-    const updatedTodos = todos.map(todo => {
-      if (todo.id === id) {
-        return { ...todo, completed: true };
-      }
-      return todo;
-    });
+  const handleComplete = (todo) => {
+    const updatedTodos = todos.map((t) =>
+      t.id === todo.id ? { ...t, completed: true } : t
+    );
     setTodos(updatedTodos);
   };
 
   return (
     <div>
-      <h2>Todos</h2>
-      <ChildComponent todos={todos} completeTodo={completeTodo} />
+      <h1>Todos</h1>
+      <ChildComponent todos={todos} onComplete={handleComplete} />
     </div>
   );
 };

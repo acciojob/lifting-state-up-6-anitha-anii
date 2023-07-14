@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ChildComponent = ({ todos, onComplete }) => {
-  const handleComplete = (todo) => {
-    onComplete(todo);
+const Button = ({ todos, onComplete }) => {
+  const handleComplete = (id) => {
+    onComplete(id);
   };
 
   return (
@@ -11,7 +11,7 @@ const ChildComponent = ({ todos, onComplete }) => {
         <li key={todo.id}>
           {todo.text}
           {!todo.completed && (
-            <button onClick={() => handleComplete(todo)}>Complete</button>
+            <button onClick={() => handleComplete(todo.id)}>Complete</button>
           )}
         </li>
       ))}
@@ -19,4 +19,4 @@ const ChildComponent = ({ todos, onComplete }) => {
   );
 };
 
-export default ChildComponent;
+export default Button;
